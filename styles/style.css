@@ -4,15 +4,15 @@ html {
   /* Replace PLACEHOLDER with the font-family property value you got from Google Fonts */
   font-family: 'Roboto';
   background-color: rgb(32, 32, 32);
+  box-sizing: border-box; /*el calculo de padding y border se hacen relativos al tamaño del contenedor*/
 }
 
-
 body {
-  width: 600px;
   margin: 0 auto;
-  background-color: #ff9500;
-  padding: 0 20px 20px 20px;
-  border: 5px solid black;
+  background-color: black;
+  color: white;
+  /* padding: 0 20px 20px 20px; Se elimina para borrar "margen interno" que impide que el navbar vaya hasta el final*/
+  /* border: 5px solid black; */
   /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
 }
 
@@ -23,13 +23,52 @@ h1 {
   text-shadow: 10px 10px 10px black;
 }
 
+/* Navigation Bar */
+.navbar {
+  display: flex; /* hace que los hijos directos del div con esta clase se comporten como flex*/
+  justify-content: space-between;
+  align-items: center; /* centra los elementos con respecto al eje transversal*/
+  color: white;
+  background-color: black;
+  padding: 20px;
+  opacity: 90%;
+  box-shadow: #7600bc;
+}
+
+.profile{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 5px;
+}
+
+.profile #User{
+  padding: 15px;
+  text-align: center;
+  font-size: large;
+}
+
+.contact_info{
+  display: flex;
+  align-items: center;
+  gap: 15px; /*Separacion entre contenedores hijos fija*/
+}
+
+.contact_info div {
+  display: flex;
+  align-items: center; /* Centra verticalmente el icono y el texto */
+  gap: 8px;            /* Separa el icono del texto uniformemente */
+}
+
+.contact_info img {
+  width:25px;
+}
+
 /* img {
   display: block;
   margin: 0 auto;
   max-width: 100%;
 } */
-
-/* Navigation Bar */
 
 #home {
   background-color:  #7600bc;
@@ -58,6 +97,8 @@ h1 {
 }
 
 .topdiv {
+  /* display: flex; */
+  gap: 20px;
   float: right;
   padding-right: 1cm;
 }
@@ -70,19 +111,7 @@ h1 {
   color: white;
 }
 
-.profile_name .contact_info {
-  font-size: 15px;
-  font-style: italic;
-  display: flex;
-  align-items: center;
-  flex-direction: row;
-}
 
-.contact_info img {
-  width:25px;
-  margin-right: 10px;
-  float:left;
-}
 
 /* Titles */
 
