@@ -1,3 +1,7 @@
+*, *::before, *::after {
+  box-sizing: border-box; /*con esto el calculo relativo del box model debria ser heredado por todas las etiquetas*/
+}
+
 html {
   /* px means "pixels". The base font size is now 10 pixels high */
   font-size: 10px;
@@ -140,9 +144,9 @@ h2 {
 
 /* Used in the About Me sections */
 
-.container {
-  display: flex;
-}
+/* .container {
+
+} */
 
 /* About Me */
 
@@ -160,7 +164,7 @@ h2 {
 #about-me p {
   font-size: 25px;
   color: rgb(128, 128, 128);
-  margin-top: -1cm;
+  margin: 5px 5px 5px 5px;
 }
 
 .profile_image {
@@ -219,20 +223,35 @@ h2 {
 
 /* Projects */
 
-.projects-container {
-  margin-top: 30px;
-  margin-left: 60px;
+.projects{
+  border: 5px solid green;
 }
 
-.projects-container hr {
-  border: 1px solid lightgray;
-  width: 75%;
-  margin-left: 5cm;
+.projects-container {
+  display: grid; /*Activa la visualizacion de rejilla*/
+  /* grid-template-columns: 1fr 1fr 1fr; Crea un grid de 3 columnas de tamaño fijo */
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); /*crea un grid responsive, donde el minimo que puede encojerse una columna es de 250,
+   el auto fit hace que cuando dos columnas no quepan, una pase a la siguiente fila*/
+  gap: 20px;
+
+  border: 5px solid white;
+
+  padding: 20px; /* 'colchon' para separar el contenido interno del border */
 }
 
 .project-card {
-  margin: 0 15px 15px 30px;
-  padding-bottom: 5px;
+  display: flex;
+  flex-direction: column;
+  border: 10px solid red;
+  height: 100%;
+  padding: 5%;
+
+  transition: transform 0.3s ease;
+
+}
+
+.project-card:hover{
+  transform: scale(1.03);
 }
 
 .project-card h3 {
@@ -282,15 +301,24 @@ h2 {
 .iconbutton{
   width: 48px;
   height: 48px;
-  border-radius: 100%;
-  background-color: #7600bc;
+  border-radius: 50%;
+  /* border: 2px solid red; */
+  /* outline: 3px solid blue ; */
+  background-color: #CD7F32;
   display: flex;
   align-items: center;
   justify-content: center;
   position: fixed;
   right: 3%;
-  bottom: 3%;
+   bottom: 3%;
   cursor: pointer;
+
+  /* Transition */
+  transition: transform 0.3s ease;
+}
+
+.iconbutton:hover{
+  transform: translateY(-8px);
 }
 
 /* Form Pop-up */
@@ -305,7 +333,10 @@ h2 {
   text-align: center;
   position: fixed;
   /* padding: 30px; */
-  visibility: hidden;
+  /* visibility: hidden; */
+
+  animation: aparecerSuave 0.5s ease-out;
+  animation-fill-mode: forwards;
 }
 
 .popup img {
@@ -379,4 +410,15 @@ button:hover {
   border-radius: 6px;
   text-align: center;
   cursor: pointer;
+}
+
+@keyframes aparecerSuave {
+  from {
+    opacity: 0;
+    transform: translate(-50%,-50%) translateY(30px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%,-50%) translateY(0) scale(1);
+  }
 }
